@@ -10,6 +10,8 @@ import Foundation
 
 class TopTenNetworkingServices {
     
+    //Fetches de data from the composed URL and returns a list with Movie objects asynchronously
+    
     func fetchData(completionHandler: @escaping ([Movie]) -> Void )  {
            
            let movieSession = URLSession.shared

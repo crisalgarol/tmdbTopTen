@@ -9,8 +9,6 @@
 import Foundation
 
 public class Endpoints {
-  
     static let movie = "/movie"
     static let topRated = "/top_rated"
-    
 }

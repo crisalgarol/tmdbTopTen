@@ -23,6 +23,7 @@ class DashboardMoviesPresenter: DashboardMoviesPresenterProtocol {
         self.moviesDataServices = moviesDataServices
     }
     
+    //Handles Services call for fetching data and processing the return movies list
     func fetchMovieData () {
         moviesDataServices.fetchData { [unowned self] (movies) in
             self.topTenMovies = movies
@@ -35,18 +36,22 @@ class DashboardMoviesPresenter: DashboardMoviesPresenterProtocol {
         }
     }
     
+    // Returns the number of total items
     func getItemsCount() -> Int {
         return topTenMovies.count
     }
     
+    // returns a Movie element by index
     func getMovieElement(at index: Int) -> Movie {
         return topTenMovies[index]
     }
     
+    // Set the selected movie into the class
     func setSelectedMovie(withMovie selectedItem: Movie) {
         self.selectedItem = selectedItem
     }
     
+    // Returns the previous selected movie
     func getSelectedMovie() -> Movie {
         guard let selectedItem = selectedItem else {
             return Movie(title: "", posterURL: "", releaseDate: "", backdropImageURL: "", ID: -1, rating: 0.0, description: "")
@@ -54,6 +59,7 @@ class DashboardMoviesPresenter: DashboardMoviesPresenterProtocol {
         return selectedItem
     }
     
+    //Checks if must fetch data from the server evaluating the 24 hours condition if not, it loads the info from disk
     func checkSavedMovies() {
         
         if DiskStorage.fileExists(fileName: savedMoviesFileName) {

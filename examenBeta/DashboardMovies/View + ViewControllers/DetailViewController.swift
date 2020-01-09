@@ -33,6 +33,7 @@ class DetailViewController: UIViewController, DetailMoviesViewProtocol {
         
     }
     
+    //Clean the UI for the first launch
     func setupUI(){
         titleLabel.text = ""
         starsControl.text = ""
@@ -48,6 +49,7 @@ class DetailViewController: UIViewController, DetailMoviesViewProtocol {
         
     }
     
+    //Updates the UI with a given Movie Object
     func updateUI(withMovie movie: Movie){
         titleLabel.text = movie.title
         starsControl.text = presenter?.calculateStarsRaiting()

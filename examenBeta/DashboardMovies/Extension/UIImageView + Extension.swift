@@ -10,6 +10,7 @@ import UIKit
 
 extension UIImageView {
     
+    //Lets you load an image from a given url in String, this loads it async and the communicate to the main thread when it's ready
     func loadImageFromURL(url: String) {
         
         let imageURL = URL(string: url)!

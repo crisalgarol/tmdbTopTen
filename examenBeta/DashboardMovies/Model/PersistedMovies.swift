@@ -8,6 +8,7 @@
 
 import Foundation
 
+//Model for persist data into the disk
 class PersistedMovies: Codable {
     
     let movies: [Movie]

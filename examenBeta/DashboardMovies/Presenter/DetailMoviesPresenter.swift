@@ -17,10 +17,12 @@ class DetailMoviesPresenter: DetailMoviesPresenterProtocol {
         self.movie = movie
     }
     
+    //A bridge for calling update UI into the View
     func updateUI() {
         delegate?.updateUI(withMovie: movie)
     }
     
+    //Returns the number of start based on the rasting punctuation
     func calculateStarsRaiting() -> String {
         let numberOfStars = Int(movie.rating/2)
         var stars = ""
@@ -34,6 +36,7 @@ class DetailMoviesPresenter: DetailMoviesPresenterProtocol {
         return stars
     }
     
+    //Returns the movie 
     func getMovie() -> Movie {
         return self.movie
     }

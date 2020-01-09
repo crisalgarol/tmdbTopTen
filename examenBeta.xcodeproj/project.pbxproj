@@ -32,7 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		316F44F523C69322003B0555 /* examenBeta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = examenBeta.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		316F44F523C69322003B0555 /* TopTenCristian.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TopTenCristian.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		316F44F823C69322003B0555 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		316F44FC23C69322003B0555 /* DashboardMoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardMoviesViewController.swift; sourceTree = "<group>"; };
 		316F44FF23C69322003B0555 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -80,7 +80,7 @@
 		316F44F623C69322003B0555 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				316F44F523C69322003B0555 /* examenBeta.app */,
+				316F44F523C69322003B0555 /* TopTenCristian.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -236,7 +236,7 @@
 			);
 			name = examenBeta;
 			productName = examenBeta;
-			productReference = 316F44F523C69322003B0555 /* examenBeta.app */;
+			productReference = 316F44F523C69322003B0555 /* TopTenCristian.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -461,7 +461,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = beko.examenBeta;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TopTenCristian;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -480,7 +480,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = beko.examenBeta;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TopTenCristian;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

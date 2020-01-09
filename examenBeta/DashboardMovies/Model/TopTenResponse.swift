@@ -8,6 +8,7 @@
 
 import Foundation
 
+//Main response of Service 
 class TopTenResponse: Codable {
     let page, totalResults, totalPages: Int?
     let results: [MovieItemResponse]?

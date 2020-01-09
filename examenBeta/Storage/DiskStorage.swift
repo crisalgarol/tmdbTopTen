@@ -8,8 +8,11 @@
 
 import Foundation
 
+//This class is for Data persistence using JSON
+
 public class DiskStorage {
     
+    //Gets the URL of Documents Directory
     static func getURLOfDocuments() -> URL {
         
         let searchDirectory = FileManager.SearchPathDirectory.documentDirectory
@@ -21,6 +24,7 @@ public class DiskStorage {
         fatalError("Can't create URL for specific directory")
     }
     
+    //Save a Codable object to the disk in JSON format
     static func saveToDisk<T: Encodable>(_ object: T, withName fileName: String) {
         
         let url = getURLOfDocuments().appendingPathComponent(fileName, isDirectory: false)
@@ -40,7 +44,7 @@ public class DiskStorage {
         }
         
     }
-    
+    //Returns a Codable Object from the disk if is previously saved
     static func getFromDisk<T: Decodable> (_ fileName: String, as type: T.Type) -> T? {
         
         let url = getURLOfDocuments().appendingPathComponent(fileName, isDirectory: false)
@@ -65,6 +69,7 @@ public class DiskStorage {
         
     }
     
+    //Delete a file with a filname given
     static func deleteFile(fileName: String) {
         
         let url = getURLOfDocuments().appendingPathComponent(fileName, isDirectory: false)
@@ -79,6 +84,7 @@ public class DiskStorage {
         
     }
     
+    //Returns a boolean if a file exists
     static func fileExists(fileName: String) -> Bool {
         let url = getURLOfDocuments().appendingPathComponent(fileName)
         return FileManager.default.fileExists(atPath: url.path)

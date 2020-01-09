@@ -25,6 +25,7 @@ class DashboardMoviesViewController: UIViewController {
         presenter.checkSavedMovies()
     }
     
+    //Configures the view for the first launch (not the first time the user opens the app)
     func setupView() {
         navigationController?.navigationBar.tintColor = UIColor.red
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
@@ -80,6 +81,7 @@ extension DashboardMoviesViewController: UITableViewDelegate, UITableViewDataSou
 }
 
 extension DashboardMoviesViewController: DashboardMoviesViewProtocol {
+    //Updates an animates the TableView
     func updateUI() {
          DispatchQueue.main.async {
              self.moviesTableView.reloadData()

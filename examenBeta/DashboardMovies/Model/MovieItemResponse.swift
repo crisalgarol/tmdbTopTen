@@ -8,6 +8,7 @@
 
 import Foundation
 
+//Movie elements in response
 class MovieItemResponse: Codable {
     let popularity: Double?
     let voteCount: Int?

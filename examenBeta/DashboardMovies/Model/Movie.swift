@@ -8,6 +8,7 @@
 
 import Foundation
 
+//Internal Movie Type with selected Data
 class Movie: Codable {
     
     let title: String
