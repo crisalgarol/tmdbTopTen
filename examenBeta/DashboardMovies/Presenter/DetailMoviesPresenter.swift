@@ -18,7 +18,7 @@ class DetailMoviesPresenter: DetailMoviesPresenterProtocol {
     }
     
     func updateUI() {
-        delegate?.setupView(withMovie: movie)
+        delegate?.updateUI(withMovie: movie)
     }
     
     func calculateStarsRaiting() -> String {

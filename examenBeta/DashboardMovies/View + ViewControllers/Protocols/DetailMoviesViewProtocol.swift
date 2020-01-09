@@ -9,5 +9,5 @@
 import Foundation
 
 protocol DetailMoviesViewProtocol: NSObjectProtocol {
-    func setupView(withMovie movie: Movie)
+    func updateUI(withMovie movie: Movie)
 }

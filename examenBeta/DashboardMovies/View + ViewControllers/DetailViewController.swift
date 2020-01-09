@@ -21,7 +21,14 @@ class DetailViewController: UIViewController, DetailMoviesViewProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+        presenter?.delegate = self
+        presenter?.updateUI()
         
+
+    }
+    
+    func setupUI(){
         titleLabel.text = ""
         starsControl.text = ""
         posterImage.alpha = 0.0
@@ -29,13 +36,14 @@ class DetailViewController: UIViewController, DetailMoviesViewProtocol {
         ratingLabel.text = ""
         descriptionLabel.text = ""
         
-        presenter?.delegate = self
-        presenter?.updateUI()
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
         
-
+        navigationController?.navigationBar.tintColor = UIColor.red
+        
     }
     
-    func setupView(withMovie movie: Movie){
+    func updateUI(withMovie movie: Movie){
         titleLabel.text = movie.title
         starsControl.text = presenter?.calculateStarsRaiting()
         releaseDateLabel.text = "Fecha de lanzamiento: \(movie.releaseDate)"

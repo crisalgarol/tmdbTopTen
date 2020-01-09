@@ -21,12 +21,16 @@ class DashboardMoviesViewController: UIViewController {
         moviesTableView.delegate = self
         moviesTableView.dataSource = self
         presenter.delegate = self
+        
         setupView()
         presenter.fetchMovieData()
         
     }
     
     func setupView() {
+        navigationController?.navigationBar.tintColor = UIColor.red
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
+
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         moviesTableView.alpha = 0.0
@@ -42,7 +46,10 @@ extension DashboardMoviesViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let currentMovie = presenter.getMovieElement(at: indexPath.row)
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = UIColor.clear
         
         let cell = moviesTableView.dequeueReusableCell(withIdentifier: "MovieCell") as! MovieCell
         
@@ -50,7 +57,8 @@ extension DashboardMoviesViewController: UITableViewDelegate, UITableViewDataSou
         cell.releaseDateLabel.isHidden = false
         cell.titleLabel.text = currentMovie.title
         cell.releaseDateLabel.text = currentMovie.releaseDate
-        
+        cell.selectedBackgroundView = backgroundView
+
         cell.poster.loadImageFromURL(url: NetworkingConstants.baseURLImages + currentMovie.posterURL)
         
         return cell
