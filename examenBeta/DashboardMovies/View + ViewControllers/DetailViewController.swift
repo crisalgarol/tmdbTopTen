@@ -23,9 +23,14 @@ class DetailViewController: UIViewController, DetailMoviesViewProtocol {
         super.viewDidLoad()
         setupUI()
         presenter?.delegate = self
-        presenter?.updateUI()
         
-
+        presenter?.updateUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+ 
+        
     }
     
     func setupUI(){

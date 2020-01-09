@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Movie {
+class Movie: Codable {
     
     let title: String
     let posterURL: String

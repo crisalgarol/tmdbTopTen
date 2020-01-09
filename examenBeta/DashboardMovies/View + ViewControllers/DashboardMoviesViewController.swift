@@ -11,9 +11,8 @@ import UIKit
 class DashboardMoviesViewController: UIViewController {
 
     @IBOutlet weak var moviesTableView: UITableView!
-    
+
     let presenter: DashboardMoviesPresenter = DashboardMoviesPresenter(moviesDataServices: TopTenNetworkingServices())
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,10 +20,9 @@ class DashboardMoviesViewController: UIViewController {
         moviesTableView.delegate = self
         moviesTableView.dataSource = self
         presenter.delegate = self
-        
         setupView()
-        presenter.fetchMovieData()
         
+        presenter.checkSavedMovies()
     }
     
     func setupView() {

@@ -9,12 +9,15 @@
 import Foundation
 
 class DashboardMoviesPresenter: DashboardMoviesPresenterProtocol {
-    
+        
     weak var delegate: DashboardMoviesViewProtocol?
     
     let moviesDataServices: TopTenNetworkingServices
+    let savedMoviesFileName = "movies.json"
+
     var topTenMovies = [Movie]()
     var selectedItem: Movie?
+
     
     required init(moviesDataServices: TopTenNetworkingServices) {
         self.moviesDataServices = moviesDataServices
@@ -24,8 +27,12 @@ class DashboardMoviesPresenter: DashboardMoviesPresenterProtocol {
         moviesDataServices.fetchData { [unowned self] (movies) in
             self.topTenMovies = movies
             self.delegate?.updateUI()
+            
+            DispatchQueue.global(qos: .userInitiated).async {
+                let moviesToSave = PersistedMovies(movies: movies, fetchedDate: Date())
+                DiskStorage.saveToDisk(moviesToSave, withName: self.savedMoviesFileName)
+            }
         }
-        
     }
     
     func getItemsCount() -> Int {
@@ -45,6 +52,26 @@ class DashboardMoviesPresenter: DashboardMoviesPresenterProtocol {
             return Movie(title: "", posterURL: "", releaseDate: "", backdropImageURL: "", ID: -1, rating: 0.0, description: "")
         }
         return selectedItem
+    }
+    
+    func checkSavedMovies() {
+        
+        if DiskStorage.fileExists(fileName: savedMoviesFileName) {
+            
+            guard let savedMovies = DiskStorage.getFromDisk(savedMoviesFileName, as: PersistedMovies.self) else { fetchMovieData(); return }
+            
+ 
+            if savedMovies.fetchedDate.timeIntervalSinceNow * -1 > 86400 {
+                fetchMovieData()
+            } else {
+                self.topTenMovies = savedMovies.movies
+                self.delegate?.updateUI()
+            }
+            
+        } else {
+            fetchMovieData()
+        }
+          
     }
     
     

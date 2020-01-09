@@ -22,7 +22,6 @@ extension UIImageView {
         URLSession.shared.dataTask(with: imageURL) { (data, response, error) in
                     
             if let error = error {
-                print("Ocurrio un error \(error)")
                 return
             }
             

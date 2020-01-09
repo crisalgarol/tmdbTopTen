@@ -16,5 +16,6 @@ protocol DashboardMoviesPresenterProtocol {
     func getMovieElement(at index: Int) -> Movie
     func setSelectedMovie(withMovie: Movie)
     func getSelectedMovie() -> Movie
+    func checkSavedMovies()
 }
 
