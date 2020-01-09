@@ -70,23 +70,37 @@
 		316F44F723C69322003B0555 /* examenBeta */ = {
 			isa = PBXGroup;
 			children = (
-				316F450E23C6ADB8003B0555 /* Model */,
-				316F44F823C69322003B0555 /* AppDelegate.swift */,
-				316F44FC23C69322003B0555 /* ViewController.swift */,
-				31ACFC5323C6FA8900D397C9 /* Endpoints.swift */,
-				31ACFC5523C6FBBD00D397C9 /* NetworkingConstants.swift */,
-				316F44FE23C69322003B0555 /* Main.storyboard */,
-				31ACFC5723C70F1D00D397C9 /* DetailViewController.swift */,
-				316F450C23C698BB003B0555 /* MovieCell.swift */,
-				316F450123C69328003B0555 /* Assets.xcassets */,
-				316F450323C69328003B0555 /* LaunchScreen.storyboard */,
+				31ACFC6023C79D4200D397C9 /* AppDelegate */,
+				31ACFC6123C79D6700D397C9 /* Resources */,
+				31ACFC5E23C79D2B00D397C9 /* Networking */,
+				31ACFC5923C79CAE00D397C9 /* DashboardMovies */,
 				316F450623C69328003B0555 /* Info.plist */,
-				31ACFC5123C6F5B300D397C9 /* UIImageView + Extension.swift */,
 			);
 			path = examenBeta;
 			sourceTree = "<group>";
 		};
-		316F450E23C6ADB8003B0555 /* Model */ = {
+		31ACFC5923C79CAE00D397C9 /* DashboardMovies */ = {
+			isa = PBXGroup;
+			children = (
+				31ACFC5D23C79CE400D397C9 /* Extension */,
+				31ACFC5C23C79CE000D397C9 /* Model */,
+				31ACFC5B23C79CD100D397C9 /* View + ViewControllers */,
+			);
+			path = DashboardMovies;
+			sourceTree = "<group>";
+		};
+		31ACFC5B23C79CD100D397C9 /* View + ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				31ACFC6323C79DB200D397C9 /* Views */,
+				31ACFC6223C79D9600D397C9 /* Custom Cells */,
+				316F44FC23C69322003B0555 /* ViewController.swift */,
+				31ACFC5723C70F1D00D397C9 /* DetailViewController.swift */,
+			);
+			path = "View + ViewControllers";
+			sourceTree = "<group>";
+		};
+		31ACFC5C23C79CE000D397C9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				316F450F23C6ADD0003B0555 /* TopTenResponse.swift */,
@@ -94,6 +108,56 @@
 				316F451323C6B1B4003B0555 /* Movie.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		31ACFC5D23C79CE400D397C9 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				31ACFC5123C6F5B300D397C9 /* UIImageView + Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		31ACFC5E23C79D2B00D397C9 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				31ACFC5323C6FA8900D397C9 /* Endpoints.swift */,
+				31ACFC5523C6FBBD00D397C9 /* NetworkingConstants.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		31ACFC6023C79D4200D397C9 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				316F44F823C69322003B0555 /* AppDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		31ACFC6123C79D6700D397C9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				316F450123C69328003B0555 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		31ACFC6223C79D9600D397C9 /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				316F450C23C698BB003B0555 /* MovieCell.swift */,
+			);
+			path = "Custom Cells";
+			sourceTree = "<group>";
+		};
+		31ACFC6323C79DB200D397C9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				316F44FE23C69322003B0555 /* Main.storyboard */,
+				316F450323C69328003B0555 /* LaunchScreen.storyboard */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
