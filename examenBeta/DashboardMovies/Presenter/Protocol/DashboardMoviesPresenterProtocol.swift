@@ -8,12 +8,13 @@
 
 import Foundation
 
-protocol DashboardMoviesProtocol {
+protocol DashboardMoviesPresenterProtocol {
 
     init(moviesDataServices: TopTenNetworkingServices)
     func fetchMovieData()
     func getItemsCount() -> Int
     func getMovieElement(at index: Int) -> Movie
-    
+    func setSelectedMovie(withMovie: Movie)
+    func getSelectedMovie() -> Movie
 }
 

@@ -1,5 +1,5 @@
 //
-//  DashboardMoviesViewProtocol.swift
+//  DetailViewProtocol.swift
 //  examenBeta
 //
 //  Created by Cristian Olmedo on 09/01/20.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol DashboardMoviesViewProtocol: NSObjectProtocol {
-    func updateUI()
+protocol DetailMoviesViewProtocol: NSObjectProtocol {
+    func setupView(withMovie movie: Movie)
 }

@@ -22,8 +22,11 @@
 		31ACFC5823C70F1D00D397C9 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31ACFC5723C70F1D00D397C9 /* DetailViewController.swift */; };
 		31ACFC6D23C7A2B500D397C9 /* DashboardMoviesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31ACFC6C23C7A2B500D397C9 /* DashboardMoviesPresenter.swift */; };
 		31ACFC7023C7A38C00D397C9 /* TopTenNetworkingServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31ACFC6F23C7A38C00D397C9 /* TopTenNetworkingServices.swift */; };
-		31ACFC7223C7A3A600D397C9 /* DashboardMoviesProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31ACFC7123C7A3A600D397C9 /* DashboardMoviesProtocol.swift */; };
+		31ACFC7223C7A3A600D397C9 /* DashboardMoviesPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31ACFC7123C7A3A600D397C9 /* DashboardMoviesPresenterProtocol.swift */; };
 		31ACFC7723C7A90400D397C9 /* DashboardMoviesViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31ACFC7623C7A90400D397C9 /* DashboardMoviesViewProtocol.swift */; };
+		31ACFC7923C7B6B400D397C9 /* DetailMoviesPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31ACFC7823C7B6B400D397C9 /* DetailMoviesPresenterProtocol.swift */; };
+		31ACFC7B23C7B92D00D397C9 /* DetailMoviesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31ACFC7A23C7B92D00D397C9 /* DetailMoviesPresenter.swift */; };
+		31ACFC7D23C7BDD400D397C9 /* DetailMoviesViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31ACFC7C23C7BDD400D397C9 /* DetailMoviesViewProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,8 +47,11 @@
 		31ACFC5723C70F1D00D397C9 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		31ACFC6C23C7A2B500D397C9 /* DashboardMoviesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardMoviesPresenter.swift; sourceTree = "<group>"; };
 		31ACFC6F23C7A38C00D397C9 /* TopTenNetworkingServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTenNetworkingServices.swift; sourceTree = "<group>"; };
-		31ACFC7123C7A3A600D397C9 /* DashboardMoviesProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardMoviesProtocol.swift; sourceTree = "<group>"; };
+		31ACFC7123C7A3A600D397C9 /* DashboardMoviesPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardMoviesPresenterProtocol.swift; sourceTree = "<group>"; };
 		31ACFC7623C7A90400D397C9 /* DashboardMoviesViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardMoviesViewProtocol.swift; sourceTree = "<group>"; };
+		31ACFC7823C7B6B400D397C9 /* DetailMoviesPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMoviesPresenterProtocol.swift; sourceTree = "<group>"; };
+		31ACFC7A23C7B92D00D397C9 /* DetailMoviesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMoviesPresenter.swift; sourceTree = "<group>"; };
+		31ACFC7C23C7BDD400D397C9 /* DetailMoviesViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMoviesViewProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +172,7 @@
 			children = (
 				31ACFC7323C7A3AB00D397C9 /* Protocol */,
 				31ACFC6C23C7A2B500D397C9 /* DashboardMoviesPresenter.swift */,
+				31ACFC7A23C7B92D00D397C9 /* DetailMoviesPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -183,7 +190,8 @@
 		31ACFC7323C7A3AB00D397C9 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				31ACFC7123C7A3A600D397C9 /* DashboardMoviesProtocol.swift */,
+				31ACFC7123C7A3A600D397C9 /* DashboardMoviesPresenterProtocol.swift */,
+				31ACFC7823C7B6B400D397C9 /* DetailMoviesPresenterProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -192,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				31ACFC7623C7A90400D397C9 /* DashboardMoviesViewProtocol.swift */,
+				31ACFC7C23C7BDD400D397C9 /* DetailMoviesViewProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -271,16 +280,19 @@
 				316F44FD23C69322003B0555 /* DashboardMoviesViewController.swift in Sources */,
 				31ACFC5223C6F5B300D397C9 /* UIImageView + Extension.swift in Sources */,
 				316F451423C6B1B4003B0555 /* Movie.swift in Sources */,
+				31ACFC7B23C7B92D00D397C9 /* DetailMoviesPresenter.swift in Sources */,
 				316F44F923C69322003B0555 /* AppDelegate.swift in Sources */,
 				316F451223C6AE76003B0555 /* MovieItemResponse.swift in Sources */,
 				31ACFC7723C7A90400D397C9 /* DashboardMoviesViewProtocol.swift in Sources */,
 				31ACFC5423C6FA8900D397C9 /* Endpoints.swift in Sources */,
+				31ACFC7D23C7BDD400D397C9 /* DetailMoviesViewProtocol.swift in Sources */,
 				31ACFC5823C70F1D00D397C9 /* DetailViewController.swift in Sources */,
 				316F450D23C698BB003B0555 /* MovieCell.swift in Sources */,
 				31ACFC5623C6FBBD00D397C9 /* NetworkingConstants.swift in Sources */,
-				31ACFC7223C7A3A600D397C9 /* DashboardMoviesProtocol.swift in Sources */,
+				31ACFC7223C7A3A600D397C9 /* DashboardMoviesPresenterProtocol.swift in Sources */,
 				31ACFC6D23C7A2B500D397C9 /* DashboardMoviesPresenter.swift in Sources */,
 				31ACFC7023C7A38C00D397C9 /* TopTenNetworkingServices.swift in Sources */,
+				31ACFC7923C7B6B400D397C9 /* DetailMoviesPresenterProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

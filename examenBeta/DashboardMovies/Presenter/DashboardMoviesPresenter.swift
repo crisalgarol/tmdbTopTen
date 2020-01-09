@@ -8,30 +8,22 @@
 
 import Foundation
 
-class DashboardMoviesPresenter: DashboardMoviesProtocol {
+class DashboardMoviesPresenter: DashboardMoviesPresenterProtocol {
+    
+    weak var delegate: DashboardMoviesViewProtocol?
     
     let moviesDataServices: TopTenNetworkingServices
     var topTenMovies = [Movie]()
+    var selectedItem: Movie?
     
     required init(moviesDataServices: TopTenNetworkingServices) {
         self.moviesDataServices = moviesDataServices
     }
     
     func fetchMovieData () {
-        
         moviesDataServices.fetchData { [unowned self] (movies) in
-            
             self.topTenMovies = movies
-            /*
-             self.topTenMovies = movies
-                    DispatchQueue.main.async {
-                        self.moviesTableView.reloadData()
-                        UIView.animate(withDuration: 0.8) {
-                            self.moviesTableView.alpha = 1.0
-                        }
-                    }
-             */
-            
+            self.delegate?.updateUI()
         }
         
     }
@@ -42,6 +34,17 @@ class DashboardMoviesPresenter: DashboardMoviesProtocol {
     
     func getMovieElement(at index: Int) -> Movie {
         return topTenMovies[index]
+    }
+    
+    func setSelectedMovie(withMovie selectedItem: Movie) {
+        self.selectedItem = selectedItem
+    }
+    
+    func getSelectedMovie() -> Movie {
+        guard let selectedItem = selectedItem else {
+            return Movie(title: "", posterURL: "", releaseDate: "", backdropImageURL: "", ID: -1, rating: 0.0, description: "")
+        }
+        return selectedItem
     }
     
     

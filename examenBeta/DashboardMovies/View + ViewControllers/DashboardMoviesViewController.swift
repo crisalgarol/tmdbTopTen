@@ -10,81 +10,22 @@ import UIKit
 
 class DashboardMoviesViewController: UIViewController {
 
-
     @IBOutlet weak var moviesTableView: UITableView!
-    var topTenMovies = [Movie]()
-    var selectedItem: Movie? = nil
+    
+    let presenter: DashboardMoviesPresenter = DashboardMoviesPresenter(moviesDataServices: TopTenNetworkingServices())
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         moviesTableView.delegate = self
         moviesTableView.dataSource = self
+        presenter.delegate = self
         setupView()
-        
-        //TO DO: This needs to be replaced
-        fetchData { [unowned self] (movies) in
-            self.topTenMovies = movies
-            DispatchQueue.main.async {
-                self.moviesTableView.reloadData()
-            }
-        }
+        presenter.fetchMovieData()
         
     }
     
-    
-    //TO DO: Delete
-    func fetchData(completionHandler: @escaping ([Movie]) -> Void )  {
-             
-             let movieSession = URLSession.shared
-             var movies = [Movie]()
-             
-             guard var topTenURLComposed = URLComponents(string: NetworkingConstants.baseURL) else {return}
-             let queryItems = [
-                 URLQueryItem(name: "api_key", value: NetworkingConstants.apiKey),
-                 URLQueryItem(name: "language", value: NetworkingConstants.spanishLanguage)
-                       ]
-             
-             topTenURLComposed.path = "/3" + Endpoints.movie + Endpoints.topRated
-             topTenURLComposed.queryItems = queryItems
-                     
-             DispatchQueue.global(qos: .userInitiated).async {
-                 movieSession.dataTask(with: topTenURLComposed.url!) { (data, response, error) in
-                     
-                     if let data = data {
-                         let jsonDecoder = JSONDecoder()
-                         let decodedResponse = try? jsonDecoder.decode(TopTenResponse.self, from: data)
-                         
-                         if let ml = decodedResponse?.results {
-                             
-                             let movieList = ml[..<10]
-                             
-                             for i in 0..<movieList.count {
-                                 let movie = movieList[i]
-                                 guard let title = movie.title else {break}
-                                 guard let posterURL = movie.posterPath else {break}
-                                 guard let backdropImageURL = movie.backdropPath else {break}
-                                 guard let movieID = movie.id else {break}
-                                 guard let releaseDate = movie.releaseDate else {break}
-                                 guard let rating = movie.voteAverage else {break}
-                                 guard let description = movie.overview else {break}
-                                 
-                                 movies.append(Movie(title: title, posterURL: posterURL, releaseDate: releaseDate, backdropImageURL: backdropImageURL, ID: movieID, rating: rating, description: description))
-                             }
-                             
-                             completionHandler(movies)
-                             
-                         }
-                     
-                         
-                     }
-                 }.resume()
-             }
-             
-
-             
-         }
-
     func setupView() {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
@@ -97,12 +38,11 @@ class DashboardMoviesViewController: UIViewController {
 extension DashboardMoviesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return topTenMovies.count
+        return presenter.getItemsCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let currentMovie = topTenMovies[indexPath
-            .row]
+        let currentMovie = presenter.getMovieElement(at: indexPath.row)
         
         let cell = moviesTableView.dequeueReusableCell(withIdentifier: "MovieCell") as! MovieCell
         
@@ -117,7 +57,7 @@ extension DashboardMoviesViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        self.selectedItem = topTenMovies[indexPath.row]
+        presenter.setSelectedMovie(withMovie: presenter.getMovieElement(at: indexPath.row))
         return indexPath
     }
     
@@ -126,8 +66,7 @@ extension DashboardMoviesViewController: UITableViewDelegate, UITableViewDataSou
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard var detailView = segue.destination as? DetailViewController else {return}
-        detailView.movie = selectedItem
-        
+        detailView.presenter = DetailMoviesPresenter(withMovie: presenter.getSelectedMovie())        
     }
     
     
@@ -135,9 +74,8 @@ extension DashboardMoviesViewController: UITableViewDelegate, UITableViewDataSou
 }
 
 extension DashboardMoviesViewController: DashboardMoviesViewProtocol {
-    func updateUI(withMovieList movieList: [Movie]) {
+    func updateUI() {
          DispatchQueue.main.async {
-             self.topTenMovies = movieList
              self.moviesTableView.reloadData()
              self.moviesTableView.alpha = 0.0
              UIView.animate(withDuration: 0.8) {

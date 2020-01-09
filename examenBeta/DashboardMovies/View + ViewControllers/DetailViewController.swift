@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, DetailMoviesViewProtocol {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var starsControl: UILabel!
@@ -17,27 +17,27 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
-    
-    var movie: Movie? = nil
+    var presenter: DetailMoviesPresenter?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         titleLabel.text = ""
-        //starsControl.text = ""
+        starsControl.text = ""
         posterImage.alpha = 0.0
         releaseDateLabel.text = ""
         ratingLabel.text = ""
         descriptionLabel.text = ""
         
-        setUpView()
+        presenter?.delegate = self
+        presenter?.updateUI()
+        
+
     }
     
-    func setUpView(){
-
-        guard let movie = movie else {return}
-        
+    func setupView(withMovie movie: Movie){
         titleLabel.text = movie.title
+        starsControl.text = presenter?.calculateStarsRaiting()
         releaseDateLabel.text = "Fecha de lanzamiento: \(movie.releaseDate)"
         ratingLabel.text = "Rating: \(movie.rating)"
         descriptionLabel.text = movie.description
